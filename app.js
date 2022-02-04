@@ -6,20 +6,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv/config');
 
-
-//Middlewares
+//Imported Middlewares
 app.use(cors());
 app.use(bodyParser.json());
 
-// app.use(express.json());
-// app.use('/api/products',productRoutes)
-
-
-// app.use('/products', () => {
-//     console.log('');
-// });
-
-//Importing routes
+//Importing routes to GET API
 const postsRoute = require('./routes/posts');
 
 app.use('/products', postsRoute);
@@ -30,7 +21,7 @@ app.get('/', (req,res) => {
 });
 
 
-//Connect to database
+//Connected to database
 mongoose.connect(process.env.MONGODB, () =>
     console.log('connected to mongoDB!')
 );
